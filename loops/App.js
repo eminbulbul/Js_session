@@ -88,16 +88,55 @@
 //     console.log(i);
 // }
 
-while (true) {
-    let x = prompt(`bir sayi giriniz: \n q ile cikis yapiniz`);
-    if (x == `q`) {
-        console.log(`cikis yapildi`);
-        break;
-    } else if (isNaN(x)) {
-        continue;
-    } else {
-        console.log(`${x}'in karesi = ${x*x}`);
-        break; //buraya break yazarak ilk dogru islemden sonra koddan cikariz
-    }
-}
+// while (true) {
+//     let x = prompt(`bir sayi giriniz: \n q ile cikis yapiniz`);
+//     if (x == `q`) {
+//         console.log(`cikis yapildi`);
+//         break;
+//     } else if (isNaN(x)) {
+//         continue;
+//     } else {
+//         console.log(`${x}'in karesi = ${x*x}`);
+//         break; //buraya break yazarak ilk dogru islemden sonra koddan cikariz
+//     }
+// }
 // else icindeki break silinirse q yazana kadar yazilan sayilarin karesi alan bir kod olur
+
+
+
+// console.log(Math.random()); //asla 1 olmayacak bir sayi uretir.
+
+// console.log(Math.random()*6+1); //0 dan kurtarmak icin boyle yazdik
+
+// console.log(Math.trunc()); // virgunden sonrasini siler
+
+// console.log(Math.trunc(Math.random()*6)+1); // zar yapmis olduk
+
+
+// -----------zar yapma oyunu----------------------
+let x, y;
+let count = 0;
+let cift = 0;
+
+while (true) {
+    x = Math.trunc(Math.random() * 6) + 1;
+    y = Math.trunc(Math.random() * 6) + 1;
+
+
+    if (x == 6 && y == 6) {
+        count++;
+        console.log(x, y, 'kazandiniz');
+        break;
+    } else if (x == y && x != 6) {
+        cift++
+        console.log(x, y, `${cift}. cift zar`);
+        if (cift == 3) {
+            console.log('kaybettiniz');
+            break;
+        }
+    }
+
+    console.log(x, y);
+    count++
+}
+console.log(count);
