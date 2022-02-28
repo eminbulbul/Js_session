@@ -36,8 +36,12 @@ const hotel = {
     sat: { open: 10, close: 20 },
   },
 
-  // book: function (obj) {
-  // console.log(obj)
+  reservation(arrival, departure, optionIndex = 0, roomIndex = 0) {
+    console.log(
+      `${this.rooms[roomIndex]} is booked with ${this.options[optionIndex]} between ${arrival}-${departure}`
+    );
+  },
+
   book: function ({ arrival, departure, optionIndex = 0, roomIndex = 0 }) {
     console.log(
       `${this.rooms[roomIndex]} is booked with ${this.options[optionIndex]} between ${arrival}-${departure}`
@@ -47,30 +51,76 @@ const hotel = {
 
 // ! destructuring
 
-const { brand, options } = hotel;
+// hotel.reservation('11:00', '23:00', 0, 0);
+// hotel.book({
+//   roomIndex: 0,
+//   departure: '22:30',
+//   optionIndex: 1,
+//   arrival: '09:00',
+// });
 
+/* console.log(hotel.brand);
+const { brand, options } = hotel;
 console.log(brand);
 console.log(options[0]);
-
-const { brand: hotelName, rooms } = hotel;
+const { brand: hotelName, rooms: roomTypes } = hotel;
 console.log('hotel name is', hotelName);
-
-// const { mon } = hotel.receptionHours;
-
+const { mon: pazartesi } = hotel.receptionHours;
+console.log(pazartesi);
 const {
   receptionHours: { mon: Monday },
 } = hotel;
 console.log(Monday);
-
 console.log('uzun yazim ->', hotel.receptionHours.fri.open);
-
 const openingFriday1 = hotel.receptionHours.fri.open;
 const closingFriday1 = hotel.receptionHours.fri.close;
-
 const {
   receptionHours: {
     fri: { open: openingFriday, close: closingFriday },
   },
 } = hotel;
+console.log(openingFriday, closingFriday); */
 
-console.log(openingFriday, closingFriday);
+// ******************
+// Array Destructuring
+// ******************
+
+/* const date = [1970, 4, 20];
+// traditional way
+const year = date[0];
+const month = date[1];
+const day = date[2];
+const [Year, Month, Day] = date;
+console.log(Day, Month, Year);
+const [year2, , day2] = date;
+console.log('year2 :>> ', year2);
+console.log('day2 :>> ', day2); */
+
+const nestedArray = [1, 2, [3, 8], [4, 5, 6], 7];
+const [first, , third, [forth, fifth], seventh] = nestedArray;
+console.log('fifth :>> ', fifth);
+
+console.log(nestedArray[3][2]);
+
+const note = {
+  id: 1,
+  title: 'My first note',
+  date: '25/04/1977',
+};
+
+// for (let [key, value] of Object.entries(note)) {
+//   console.log(key, '::->', value);
+// }
+
+// Object.entries(note).forEach(([key, value]) => {
+//   console.log(key, '::=>', value);
+// });
+
+// ! default parameters
+
+function greet(user = 'Guest') {
+  console.log(`Hello ${user}`);
+}
+
+greet('Matthew');
+greet();
