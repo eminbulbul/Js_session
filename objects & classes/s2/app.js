@@ -124,3 +124,22 @@ function greet(user = 'Guest') {
 
 greet('Matthew');
 greet();
+
+// spread operator 
+
+let newHotel = {...hotel};
+
+newHotel.brand = `Hotel California`;
+
+console.log(hotel.brand);
+console.log('newhote.brand: ==> ',newHotel.brand);
+
+const arr1 = [1,2,3];
+const arr2 = [4,5,6];
+// const arr3 = [...arr1,11, ...arr2, 7,8,9]; 1.yontem
+
+// console.log(arr3);
+
+const arr4 = arr1;
+arr4.push(42);
+
