@@ -80,13 +80,134 @@ console.log(grades);
 
 const words = ["mum", "kek", "gel", "ısı", "iyi"];
 
-const checkPalindrome = words.map((word) => [...word].reverse().join('') === word)
-console.log(checkPalindrome);
+// const checkPalindrome = words.map((word) => [...word].reverse().join('') === word)
+// console.log(checkPalindrome);
 
 // let inputArr = prompt('check your word is polindrom ?').split(''); my solition :D
-// if (inputArr == inputArr.reverse()) {
+// if (inputArr == inputArr.r4everse()) {
 //   console.log(`${inputArr.join('')} is polindrom`);
 // }else{
 //   console.log(`${inputArr.join('')} is NOT polindrom`);
 // };
 
+
+
+
+
+
+// *-----------------------------------------------------
+// *                      FILTER
+// *-----------------------------------------------------
+
+//* Return the palindromic item in the words as an array
+const checkPalindrome = words.filter(
+  (word) => [...word].reverse().join("") === word
+);
+console.log(checkPalindrome);
+
+//* Convert to uppercase palindromic items and print in the console
+words
+  .filter((word) => [...word].reverse().join("") === word)
+  .map((word) => word.toLocaleUpperCase())
+  .forEach((word) => console.log(word));
+
+// *-----------------------------------------------------
+// *                      REDUCE
+// *-----------------------------------------------------
+
+//* calculate the sum of all elements of array
+//* and print result into console
+//*-------------------------------------------------------
+const salaries = [10000, 15000, 32000, 43000, 20000];
+
+const avgSalaries =
+  salaries.reduce((acc, salary) => acc + salary, 0) / salaries.length;
+console.log(avgSalaries);
+
+//*
+const graeterThan20000 = salaries
+  .filter((s) => s > 20000)
+  .reduce((acc, s) => acc + s, 0);
+console.log(graeterThan20000);
+
+// * ======================================================
+// *                NESTED ARRAY ITERATION (JSON)
+// * ======================================================
+
+const personels = [
+  {
+    id: 1,
+    name: "Ali",
+    surname: "Yılmaz",
+    job: "developer",
+    age: 30,
+    salary: 5000,
+  },
+  {
+    id: 2,
+    name: "Ayşe",
+    surname: "Yılmaz",
+    job: "tester",
+    age: 35,
+    salary: 3000,
+  },
+  {
+    id: 3,
+    name: "Mehmet",
+    surname: "Öztürk",
+    job: "team lead",
+    age: 40,
+    salary: 7000,
+  },
+  {
+    id: 4,
+    name: "Fatma",
+    surname: "Ayaz",
+    job: "developer",
+    age: 26,
+    salary: 4500,
+  },
+
+  {
+    id: 5,
+    name: "Can",
+    surname: "Deniz",
+    job: "tester",
+    age: 24,
+    salary: 3500,
+  },
+];
+console.log(personels);
+
+//* EXAMPLE1: display the jobs in the people array.
+personels.forEach((p) => console.log(p.job));
+
+//* EXAMPLE2: increment the ages by one and store them to a new array.
+const ages = personels.map((p) => p.age + 1);
+console.log(ages);
+
+//* EXAMPLE3: Create new Object which consists of uppercased name + surname and incremented the age by 5.
+
+const newPersonels = personels.map((p) => {
+  return {
+    name: p.name.toLocaleUpperCase() + " " + p.surname.toLocaleUpperCase(),
+    age: p.age + 5,
+  };
+});
+
+console.log(newPersonels);
+
+//* EXAMPLE4: List the person's names whose age is under 33.
+
+//* EXAMPLE5: Store the names and ages of the developers as a new Object.
+
+//* EXAMPLE6: calculate avg age of  people.
+
+//*EXAMPLE7: Increase the salaries of developers by 20% and
+//* calculate sum of increased salary of devs.
+
+//*EXAMPLE8: Increase the salaries of developers by 20% and
+//* update the personels object.
+
+//*EXAMPLE9: Delete personel whose id is equals to 4;
+//* Exmple: deleteById(4)
