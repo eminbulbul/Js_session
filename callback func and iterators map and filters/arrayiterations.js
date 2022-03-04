@@ -24,7 +24,7 @@ console.log("SUM:", sum);
 
 //! foreach doesnt return
 // const sumofPayments = payments.forEach((p) => (sum += p))
-// console.log(sumofPayments);
+// console.log(sumofPayments); its void functions.
 
 //* Example
 payments.forEach((p, i) => {
@@ -37,9 +37,56 @@ payments.forEach((p, i) => {
 //*                      MAP
 //*-----------------------------------------------------
 
-//* multiply each element of array by 2
+//* multiply each element of array by 2. map() functions can returns,not void function
 //*-------------------------------------------------------
 const numbers = [2, 3, 5, 6, 8];
 
 const doubled = numbers.map((n) => n * 2);
 console.log(doubled, numbers);
+
+//! example
+
+//* if a grade is less than 50, increase it by 20% oherwise
+//* increase it by 10% and store all value in the grades array.
+//*-------------------------------------------------------
+
+let grades = [30,50,77,38,44,80];
+
+grades = grades.map((grade)=> (grade > 50 ? grade * 1.1 : grade * 1.2).toFixed(2));
+
+console.log(grades);
+
+// grades = grades.map((grade) => {
+//  return grade > 50 ? grade * 1.1 : grade * 1.2;
+// });
+
+// console.log(grades); return yoksa error verir
+
+//? Modified
+
+  const gradesInfo = grades.map((grade,index)=> {
+   const newGrade = (grade > 50 ? grade * 1.1 : grade * 1.2).toFixed(2)
+   return `${index + 1}. Students Grade : ${newGrade}`
+});
+console.log(grades);
+
+
+//! example
+
+//* Test the each item of the words array whether palindromic or not.
+//* Return the result as an array which consists of true or
+//* false values for each item
+//*-------------------------------------------------------
+
+const words = ["mum", "kek", "gel", "ısı", "iyi"];
+
+const checkPalindrome = words.map((word) => [...word].reverse().join('') === word)
+console.log(checkPalindrome);
+
+// let inputArr = prompt('check your word is polindrom ?').split(''); my solition :D
+// if (inputArr == inputArr.reverse()) {
+//   console.log(`${inputArr.join('')} is polindrom`);
+// }else{
+//   console.log(`${inputArr.join('')} is NOT polindrom`);
+// };
+
