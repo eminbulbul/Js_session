@@ -85,3 +85,38 @@ setTimeout(() => {
   console.warn('this is the second message');
   console.timeLog('»» setTimeout example');
 }, 2000);
+
+
+//! callback hell
+
+// setTimeout(() => {
+//   console.log('john:Hi');
+//   setTimeout(() => {
+//     console.warn('Sarah: Hello');
+//     setTimeout(() => {
+//       console.log('John: How Are you?');
+//       setTimeout(() => {
+//         console.warn('Sarah: Fine and you?');
+//       }, 1000);
+//     }, 1000);
+//   }, 1000);
+// }, 1000);
+
+console.time('»» callback hell example');
+console.timeLog('»» callback hell example');
+setTimeout(() => {
+  console.warn('this is the first message');
+  setTimeout(() => {
+    console.warn('this is the second message');
+    setTimeout(() => {
+      console.warn('this is the third message');
+      setTimeout(() => {
+        console.warn('this is the fourth message');
+        setTimeout(() => {
+          console.warn('this is the fifth message');
+          console.timeEnd('»» callback hell example');
+        }, 1000);
+      }, 1000);
+    }, 1000);
+  }, 1000);
+}, 1000);
