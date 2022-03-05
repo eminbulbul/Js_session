@@ -120,3 +120,54 @@ setTimeout(() => {
     }, 1000);
   }, 1000);
 }, 1000);
+
+
+//* SETINTERVAL
+// function hello() {
+//   console.log('Hello world');
+// }
+// setInterval(hello, 2000);
+
+// function showTime() {
+//   let dateTime = new Date();
+//   let time = dateTime.toLocaleTimeString();
+//   console.log(time);
+// }
+// let display = setInterval(showTime, 5000);
+
+// program to stop the setInterval() method after five times
+// let count = 0;
+// let interval = setInterval(function () {
+//   count += 1;
+//   if (count === 5) {
+//     clearInterval(interval);
+//   }
+//   let dateTime = new Date();
+//   let time = dateTime.toLocaleTimeString();
+//   console.log(time);
+// }, 2000);
+
+// let count = 10;
+// let intervalId = setInterval(function () {
+//   if (count === 0) {
+//     console.log('Time is over');
+//     clearInterval(intervalId);
+//   } else {
+//     console.log(count);
+//     count--;
+//   }
+// }, 1000);
+
+//? setInterval example
+
+const tick = () => {
+    counter++;
+    console.warn(`» ${counter}`);
+    if (counter == 5) {
+      clearInterval(intervalId);
+    }
+  };
+  const intervalId = setInterval(tick, 1000);
+  
+  let counter = 0;
+
