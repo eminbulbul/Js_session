@@ -8,7 +8,6 @@
 // clearTimeout(id); //islemi durdurduk.
 // console.log('contiuning....');
 
-
 // let id2 =  setTimeout(() => {
 //     console.log('asynch programming is amazing');
 // }, 4000);
@@ -17,24 +16,24 @@
 
 //? Example
 
-const slowTask = ()=>{
-    let i =0;
-    let result ={firstName:'john',LastName:'Doe'};
-    do{
-        i++
-        //some long operation
-    }while(i<1_000_000_000);
-    return result;
+const slowTask = () => {
+  let i = 0;
+  let result = { firstName: "john", LastName: "Doe" };
+  do {
+    i++;
+    //some long operation
+  } while (i < 1_000_000_000);
+  return result;
 };
 
-function wait(ms) { //this func for wait bekletme fonksiyonu 
-    const start = new Date().getTime();
-    let end = start;
-    while (end < start +ms) {
-        end = new Date().getTime();
-    }
+function wait(ms) {
+  //this func for wait bekletme fonksiyonu
+  const start = new Date().getTime();
+  let end = start;
+  while (end < start + ms) {
+    end = new Date().getTime();
+  }
 }
-
 
 // console.log('» A..1');
 // wait(3000); // 1 second wait
@@ -70,22 +69,21 @@ function wait(ms) { //this func for wait bekletme fonksiyonu
 // console.timeLog('»» time elapsed');
 
 //? another example
-console.time('»» setTimeout example');
-console.timeLog('»» setTimeout example');
+console.time("»» setTimeout example");
+console.timeLog("»» setTimeout example");
 setTimeout(() => {
-  console.warn('this is the third message');
-  console.timeLog('»» setTimeout example');
+  console.warn("this is the third message");
+  console.timeLog("»» setTimeout example");
 }, 3000);
 setTimeout(() => {
   slowTask();
-  console.error('this is the first message');
-  console.timeLog('»» setTimeout example');
+  console.error("this is the first message");
+  console.timeLog("»» setTimeout example");
 }, 1000);
 setTimeout(() => {
-  console.warn('this is the second message');
-  console.timeLog('»» setTimeout example');
+  console.warn("this is the second message");
+  console.timeLog("»» setTimeout example");
 }, 2000);
-
 
 //! callback hell
 
@@ -102,25 +100,24 @@ setTimeout(() => {
 //   }, 1000);
 // }, 1000);
 
-console.time('»» callback hell example');
-console.timeLog('»» callback hell example');
+console.time("»» callback hell example");
+console.timeLog("»» callback hell example");
 setTimeout(() => {
-  console.warn('this is the first message');
+  console.warn("this is the first message");
   setTimeout(() => {
-    console.warn('this is the second message');
+    console.warn("this is the second message");
     setTimeout(() => {
-      console.warn('this is the third message');
+      console.warn("this is the third message");
       setTimeout(() => {
-        console.warn('this is the fourth message');
+        console.warn("this is the fourth message");
         setTimeout(() => {
-          console.warn('this is the fifth message');
-          console.timeEnd('»» callback hell example');
+          console.warn("this is the fifth message");
+          console.timeEnd("»» callback hell example");
         }, 1000);
       }, 1000);
     }, 1000);
   }, 1000);
 }, 1000);
-
 
 //* SETINTERVAL
 // function hello() {
@@ -161,13 +158,113 @@ setTimeout(() => {
 //? setInterval example
 
 const tick = () => {
-    counter++;
-    console.warn(`» ${counter}`);
-    if (counter == 5) {
-      clearInterval(intervalId);
-    }
-  };
-  const intervalId = setInterval(tick, 1000);
-  
-  let counter = 0;
+  counter++;
+  console.warn(`» ${counter}`);
+  if (counter == 5) {
+    clearInterval(intervalId);
+  }
+};
+const intervalId = setInterval(tick, 1000);
 
+let counter = 0;
+
+console.log("» index.js is running");
+
+function wait(ms) {
+  const start = new Date().getTime();
+  let end = start;
+  while (end < start + ms) {
+    end = new Date().getTime();
+  }
+}
+
+// *=====================================================
+// *                   PROMISES
+// *=====================================================
+
+const promise = new Promise((resolve, reject) => {
+  // some calculation
+  wait(2000);
+  const userData = {
+    firstName: "Barry",
+    birthYear: 1977,
+  };
+  /* let successful = Math.floor(Math.random() * 2);
+  if (successful)  */
+  resolve(userData);
+  reject(new Error("Something went wrong!"));
+});
+
+// promise.then(
+//   (result) => {
+//     console.log(result);
+//   },
+//   (error) => {
+//     console.log(error);
+//   }
+// );
+
+/* promise
+  .then((res) => {
+    console.log(res);
+    return 'selam';
+  })
+  .then((r) => {
+    console.log(r);
+  })
+  .catch((error) => {
+    console.log(error);
+  }); */
+
+const cayDemle = () => {
+  // suyuKaynat(); ->  cayEkle(); ->   bekle(); ->   afiyet();
+  suyuKaynat()
+    .then((durum1) => {
+      console.log(durum1);
+      return cayEkle();
+    })
+    .then((durum2) => {
+      console.log(durum2);
+      bekle(1500);
+      return afiyet();
+    })
+    .then((durum3) => {
+      console.log(durum3);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+const suyuKaynat = () => {
+  return new Promise((resolve, reject) => {
+    const nasip = Math.floor(Math.random() * 2);
+    if (nasip) {
+      bekle(2000);
+      resolve("✅ Su kaynadi");
+    }
+    reject(new Error("❌ Kettle arizali"));
+  });
+};
+
+const cayEkle = () => {
+  return new Promise((resolve, reject) => {
+    const cayNasibi = Math.floor(Math.random() * 2);
+    if (cayNasibi) {
+      bekle(500);
+      resolve("✅ Cay eklendi.");
+    }
+    reject("❌ Cay bitmis");
+  });
+};
+
+const bekle = (ms) => {
+  const start = new Date().getTime();
+  while (new Date().getTime() < start + ms);
+};
+
+const afiyet = (m) => {
+  return "🫖 cay hazir afiyet olsun";
+};
+
+cayDemle();
